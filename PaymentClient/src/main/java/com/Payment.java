@@ -40,14 +40,16 @@ public class Payment {
     			return "Error while connecting to the database for reading.";
     		}
     		// Prepare the html table to be displayed
-    		output = "<table border='1'><tr><th>PaymentID</th>" 
+    		output = "<table class='table table-striped table-hover'><thead><tr><th>PaymentID</th>" 
 					+"<th>UserID</th><th>PowerSupplierID</th>"
 					+ "<th>Payment_Method</th>" 
 					+ "<th>Payment_Date</th>" 
 					+ "<th>Amount</th>"
 					+ "<th>Type</th>"
 					+ "<th>Consumption_Unit</th>"
-					+ "<th>NoOfUnits</th></tr>"; 
+					+ "<th>NoOfUnits</th>"
+					+ "<th>Update</th>"
+    				+ "<th>Remove</th></tr></thead>"; 
     		
     		String query = "select * from payment";
     		Statement stmt = con.createStatement();
@@ -76,7 +78,7 @@ public class Payment {
 			
 			
     			// buttons
-    			output += "<td><input name='btnUpdate' type='button' value='Update' class='btnUpdate btn btn-secondary' data-itemid='"+ PaymentID + "'>" + "</td>"
+    			output += "<td><input name='btnUpdate' type='button' value='Update' class='btnUpdate btn btn-primary' data-itemid='"+ PaymentID + "'>" + "</td>"
     					+ "<td><input name='btnRemove' type='button' value='Remove' class='btnRemove btn btn-danger' data-itemid='"+ PaymentID + "'>" + "</td></tr>";
     		}
     		con.close();
